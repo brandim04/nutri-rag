@@ -1,0 +1,8 @@
+# requirements.txt
+pypdf
+langchain-text-splitters
+sentence-transformers
+supabase
+psycopg2-binary
+python-dotenv
+tqdm

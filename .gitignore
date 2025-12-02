@@ -1,0 +1,23 @@
+# Arquivos de Sistema
+.DS_Store
+Thumbs.db
+
+# Pastas de Ambientes Virtuais (CAUSA DO PROBLEMA DE TAMANHO)
+venv/
+env/
+__pycache__/
+
+# Arquivos de Configuração Secretos
+.env
+
+# Arquivos de Log e Cache
+*.log
+.ipynb_checkpoints/
+
+# Cache do Streamlit
+.streamlit/cache/
+
+# Documentos grandes (se você tem muitos PDFs na pasta data/)
+# Embora os dados sejam importantes, o Git não é ideal para eles.
+# Se a pasta 'data/' tiver dezenas de MB, ignore-a também:
+# data/

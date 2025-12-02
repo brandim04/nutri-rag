@@ -1,0 +1,14 @@
+# .streamlit/config.toml
+
+[theme]
+# Cor de fundo principal (Um rosa suave, mas perceptível para o fundo principal)
+backgroundColor = "#FFE8F0" 
+
+# Cor de fundo secundária (Um rosa mais forte para sidebars e caixas de entrada)
+secondaryBackgroundColor = "#FF99AA" 
+
+# Cor primária (Um tom profundo de rose/magenta para botões, links e barras de progresso)
+primaryColor = "#C2185B" 
+
+# Cor do texto (Preto padrão para melhor legibilidade)
+textColor = "#333333"
