@@ -1,11 +1,10 @@
-# src/rag_query.py (Versão Google Gemini)
 import os
 import time
 from dotenv import load_dotenv
 import logging
 from sentence_transformers import SentenceTransformer
 from supabase import create_client, Client
-from google import genai # <--- NOVO: Importa o SDK do Google GenAI
+from google import genai 
 from typing import List, Dict, Any
 
 # --- 1. Configuração Inicial e Logs ---
@@ -20,8 +19,8 @@ SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_ANON_KEY = os.getenv("SUPABASE_ANON_KEY") 
 
 # Google Gemini
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY") # <--- NOVO
-LLM_MODEL_NAME = "gemini-2.5-flash" # <--- Modelo rápido e gratuito do Gemini
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY") 
+LLM_MODEL_NAME = "gemini-2.5-flash"
 K_CHUNKS = 5 
 
 # Inicializa o cliente Supabase
@@ -34,7 +33,6 @@ except Exception as e:
     
 # Inicializa o cliente Gemini
 try:
-    # O cliente do Google GenAI usa a variável GEMINI_API_KEY automaticamente
     client_gemini = genai.Client(api_key=GEMINI_API_KEY)
     logging.info("Cliente Google Gemini inicializado.")
 except Exception as e:
