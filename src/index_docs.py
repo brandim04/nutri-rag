@@ -1,11 +1,10 @@
-# src/index_docs.py (Versão API de REST - Solução Final para Problemas de Rede)
 import os
 import time
 from dotenv import load_dotenv
 from pypdf import PdfReader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from sentence_transformers import SentenceTransformer
-import requests # Para fazer requisições HTTP/REST
+import requests 
 from supabase import create_client, Client 
 from tqdm import tqdm
 import logging
@@ -112,26 +111,26 @@ def insert_data_to_supabase_api(chunks_data: List[Dict[str, Any]]):
         try:
             # Envia o lote via POST (inserção)
             response = requests.post(INSERT_URL, headers=HEADERS, json=payload)
-            response.raise_for_status() # Lança exceção para códigos de erro HTTP
+            response.raise_for_status() 
             
             success_count += len(batch_data)
             logging.info(f"Lote {i//BATCH_SIZE + 1} de {len(batch_data)} registros inserido com sucesso (HTTP {response.status_code}).")
 
         except requests.exceptions.HTTPError as e:
-            logging.error(f"❌ Erro HTTP ao inserir Lote {i//BATCH_SIZE + 1}. Código: {e.response.status_code}. Resposta: {e.response.text}")
+            logging.error(f"Erro HTTP ao inserir Lote {i//BATCH_SIZE + 1}. Código: {e.response.status_code}. Resposta: {e.response.text}")
             logging.error("O erro (401) é devido à chave SUPABASE_SERVICE_KEY incorreta no .env.")
             break
         except requests.exceptions.RequestException as e:
-            logging.error(f"❌ Erro de Conexão de Rede durante a inserção. Erro: {e}")
+            logging.error(f"Erro de Conexão de Rede durante a inserção. Erro: {e}")
             break
         except Exception as e:
-            logging.error(f"❌ Erro inesperado durante a inserção: {e}")
+            logging.error(f"Erro inesperado durante a inserção: {e}")
             break
 
     if success_count == total_records:
-        logging.info(f"✅ Indexação COMPLETA! Total de {total_records} registros processados via API.")
+        logging.info(f"Indexação COMPLETA! Total de {total_records} registros processados via API.")
     else:
-        logging.warning(f"⚠️ Indexação PARCIAL ou Falha Total. {success_count} de {total_records} inseridos.")
+        logging.warning(f"Indexação PARCIAL ou Falha Total. {success_count} de {total_records} inseridos.")
 
 
 # --- 4. Função Principal (Main) ---
